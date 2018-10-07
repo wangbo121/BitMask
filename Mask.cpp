@@ -16,7 +16,7 @@ Mask::Mask()
 
 void Mask::setup( void )
 {
-
+	thread_test.pthread_init();
 }
 
 #define US_PER_SECOND 1e6  // 1 second == 1e6 micro seconds
@@ -45,8 +45,8 @@ void Mask::loop_fast()
 
 void Mask::get_gcs_udp()
 {
-//	Mask.update_key_board();
-//    signal(SIGINT, set_all_servos_ready_due_to_kill);
+	mask.update_key_board();
+    signal(SIGINT, return_to_init_state);
 }
 
 void Mask::send_gcs_udp()
@@ -58,10 +58,13 @@ void Mask::send_gcs_udp()
 void Mask::loop_1hz()
 {
 	// DEBUG_PRINTF("Hello loop_1hz\n");
+	DEBUG_PRINTF("Hello loop_1hz ---- global_bool_mask.cnt_50hz = %d \n", global_bool_mask.cnt_50hz);
+	mask.thread_test.pthread_sem_post();
 }
 
 void Mask::loop_50hz()
 {
+	global_bool_mask.cnt_50hz++;
     // DEBUG_PRINTF("Hello loop_50hz\n");
 }
 
@@ -199,5 +202,14 @@ void Mask::update_key_board()
 	fflush(stdout);
 }
 
+void Mask::return_to_init_state(int sig)
+{
+	/*
+	 * 这里写在终止程序之前应该做的动作
+	 */
+	printf("终端输入了 ctrl+c 来终止程序 \n");
+
+	signal( SIGINT , SIG_DFL);
+}
 
 

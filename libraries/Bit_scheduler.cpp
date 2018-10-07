@@ -9,11 +9,10 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "Bit_clock.h" // 获取时间us ms s函数
+#include "Bit_clock.h"
 
 #include "Bit_scheduler.h"
 
-// 初始化调度任务表及其参数
 void BIT_Scheduler::init(const BIT_Scheduler::Task *tasks, uint8_t num_tasks)
 {
     _tasks = tasks;
@@ -113,10 +112,12 @@ uint16_t BIT_Scheduler::get_loop_rate_hz(void)
 {
     if(_loop_rate_hz < 1)
     {
+    	printf("The loop_rate_hz is too small. \n");
         return 1;
     }
     else if(_loop_rate_hz > 1000)
     {
+    	printf("The loop_rate_hz is too large. \n");
         return 1000; // 最高1000hz
     }
 

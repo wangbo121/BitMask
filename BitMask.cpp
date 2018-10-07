@@ -23,14 +23,14 @@
 
 const BIT_Scheduler::Task Mask::scheduler_tasks[] =
 {
-    { SCHED_TASK(get_gcs_udp),                                                 10,      200 },
+    { SCHED_TASK(get_gcs_udp),                                                 10,      300 },
     { SCHED_TASK(send_gcs_udp),                                                10,      200 },
 
     { SCHED_TASK(loop_1hz),                                                     1,      200 },
     { SCHED_TASK(loop_50hz),                                                   50,      200 },
     { SCHED_TASK(loop_100hz),                                                 100,      200 },
 
-    { SCHED_TASK(get_timedata_now),                                             1,      300 },
+    { SCHED_TASK(get_timedata_now),                                             1,      350 },
     { SCHED_TASK(record_log),                                                   1,      200 },
 
     { SCHED_TASK(end_of_task),                                                  1,       10 }

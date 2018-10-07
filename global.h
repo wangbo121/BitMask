@@ -44,13 +44,10 @@
 
 class GLOBAL_BOOL_MASK
 {
+public:
 	uint32_t cnt_100hz;
-
-	uint8_t bool_servo_direction;
-
-	uint8_t bool_is_able_to_send_command_to_servo;
-	uint8_t bool_stop_all_servo;
-
+	uint32_t cnt_50hz;
+	uint32_t cnt_1hz;
 };
 
 extern GLOBAL_BOOL_MASK global_bool_mask;
