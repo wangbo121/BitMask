@@ -79,20 +79,31 @@ void Bit_Pthread::pthread_sem_post()
 	}
 }
 
+//void Bit_Pthread::pthread_loop()
+//{
+//	printf("Enter the pthread_loop...\n");
+//
+//	while(1)
+//	{
+//		sem_wait(&task_sem);     /*等待信号量*/
+//
+//		pthread_loop_cnt++;
+//		printf("Enter the pthread_loop pthread_loop_cnt = %d...\n", pthread_loop_cnt);
+//	}
+//}
+
 void Bit_Pthread::pthread_loop()
 {
-	printf("Enter the pthread_loop...\n");
-
-	while(1)
-	{
-		sem_wait(&task_sem);     /*等待信号量*/
-
-		pthread_loop_cnt++;
-		printf("Enter the pthread_loop pthread_loop_cnt = %d...\n", pthread_loop_cnt);
-	}
+//	printf("Enter the pthread_loop...\n");
+//
+//	while(1)
+//	{
+//		sem_wait(&task_sem);     /*等待信号量*/
+//
+//		pthread_loop_cnt++;
+//		printf("Enter the pthread_loop pthread_loop_cnt = %d...\n", pthread_loop_cnt);
+//	}
 }
-
-
 
 
 

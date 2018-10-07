@@ -16,7 +16,10 @@ Mask::Mask()
 
 void Mask::setup( void )
 {
-	thread_test.pthread_init();
+	// thread_camera = new Camera(); // 请勿删除
+	thread_camera.camera_init();
+	thread_camera.pthread_init();
+
 }
 
 #define US_PER_SECOND 1e6  // 1 second == 1e6 micro seconds
@@ -59,7 +62,9 @@ void Mask::loop_1hz()
 {
 	// DEBUG_PRINTF("Hello loop_1hz\n");
 	DEBUG_PRINTF("Hello loop_1hz ---- global_bool_mask.cnt_50hz = %d \n", global_bool_mask.cnt_50hz);
-	mask.thread_test.pthread_sem_post();
+
+	// 主程序中给信号量
+	mask.thread_camera.pthread_sem_post();
 }
 
 void Mask::loop_50hz()

@@ -31,6 +31,7 @@
 #include "global.h"
 
 #include "Bit_pthread.h"
+#include "Camera.h"
 
 #define KEY_BOARD_LENGTH 10 // 键盘输入指令必须小于 KEY_BOARD_LENGTH-2 个字符
 
@@ -101,8 +102,8 @@ public:
 	/*
 	 * 创建线程相关
 	 */
-	Bit_Pthread thread_test;
-	Bit_Pthread thread_camera;
+	// Bit_Pthread *thread_camera; // 请勿删除
+	Camera thread_camera;
 };
 
 extern Mask mask;

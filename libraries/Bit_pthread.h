@@ -28,18 +28,14 @@ public:
 	void pthread_sem_post(); // 定时释放信号量
 
 	// 封装线程 参考网址 https://www.cnblogs.com/shijingxiang/articles/5389294.html
-	void pthread_loop();
+	virtual void pthread_loop();
 
 	void pthread_set_priority();
 
 	// 设置优先级
 	int get_thread_policy( pthread_attr_t &attr);
 	void show_thread_priority( pthread_attr_t &attr, int policy);
-
-
 	int get_thread_priority( pthread_attr_t &attr);
-
-
 	void set_thread_policy( pthread_attr_t &attr, int policy );
 
 public:
