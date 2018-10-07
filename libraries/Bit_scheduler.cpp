@@ -75,7 +75,7 @@ void BIT_Scheduler::run(uint32_t time_available)
             if (_task_time_allowed <= time_available)
             {
 
-                _task_time_started = (uint64_t)clock_us();
+                _task_time_started = (uint64_t)Bit_Clock::clock_us();
                 _tasks[i].function();
 
                 /*
@@ -84,7 +84,7 @@ void BIT_Scheduler::run(uint32_t time_available)
                 _last_run[i] = _tick_counter;
 
                 // 计算这个任务到底需要花了多少时间
-                uint32_t time_taken = (uint64_t)clock_us() - _task_time_started;
+                uint32_t time_taken = (uint64_t)Bit_Clock::clock_us() - _task_time_started;
                 //printf("task [%2d]  time_taken    : =%d \n", i, time_taken);
 
                 if (time_taken > _task_time_allowed)

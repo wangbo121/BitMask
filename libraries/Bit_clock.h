@@ -16,11 +16,23 @@
  * 当在Linux系统下的实现时
  * 在编译链接时需加上 -lrt
  */
-uint64_t clock_us();
-uint64_t clock_ns(); // 纳秒
+class Bit_Clock
+{
+public:
+	Bit_Clock(void);
 
-void delay_ms(uint32_t ms);
-void delay_us(uint32_t us);
+	/*
+	 * 从系统启动瞬间到当前时间所经过的时间[s]
+	 */
+	static uint64_t clock_s();
+	static uint64_t clock_ms();
+	static uint64_t clock_us();
+	static uint64_t clock_ns();
+
+	static void delay_s(uint32_t s);
+	static void delay_ms(uint32_t ms);
+	static void delay_us(uint32_t us);
+};
 
 #endif /* LIBRARIES_BIT_CLOCK_H_ */
 

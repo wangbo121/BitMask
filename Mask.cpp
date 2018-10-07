@@ -25,14 +25,14 @@ void Mask::loop( void )
     //DEBUG_PRINTF("time_available_usec = %d \n", scheduler.time_available_usec());
     wait_us(scheduler.time_available_usec());
 
-    uint64_t timer = (uint64_t)clock_us(); //当前系统运行时间精确到微秒
+    uint64_t timer = (uint64_t)Bit_Clock::clock_us(); //当前系统运行时间精确到微秒
 
     loop_fast(); // 优先级别最高的函数
 
     scheduler.tick(); // 告诉调度器scheduler一个tick已经过去了
 
     uint32_t loop_us = (uint32_t)(US_PER_SECOND / scheduler.get_loop_rate_hz()); // uint32 4294967295 最大4294.967295秒
-    uint32_t time_available = loop_us - (uint32_t)( (uint64_t)clock_us() - (uint64_t)timer );
+    uint32_t time_available = loop_us - (uint32_t)( (uint64_t)Bit_Clock::clock_us() - (uint64_t)timer );
 
     // DEBUG_PRINTF("loop_fast   : time_available = %d \n", time_available);
     scheduler.run(time_available > loop_us ? 0u : time_available);
@@ -101,12 +101,12 @@ void Mask::end_of_task()
 
 void Mask::wait_ms(int ms)
 {
-    delay_ms(ms);
+	Bit_Clock::delay_ms(ms);
 }
 
 void Mask::wait_us(uint32_t us)
 {
-    delay_us(us);
+	Bit_Clock::delay_us(us);
 }
 
 int8_t Mask::read_key_board()
